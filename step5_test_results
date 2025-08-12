@@ -1,0 +1,13 @@
+Scenario	Inputs	Expected Output	Actual Logic Output	Improvement Suggestions
+Pet eats as expected	Feeding time 08:00, hopper level OK, bowl empty	Dispense food, detect consumption, log success	Works as intended	None needed
+Pet does not eat	Feeding time 18:00, hopper OK, bowl weight unchanged after 30 min	Send “Food not eaten” alert, log event	Works as intended	Consider sending reminder after 1 hour
+Food bin empty	Feeding time, hopper level low	Send “Low hopper” alert, skip feeding	Works as intended	Add automatic log to refill list
+Motor jammed	Feeding time, hopper OK, bowl weight unchanged immediately after motor run	Send “No food dispensed” alert	Works as intended	Add automatic retry before sending alert
+
+Refinements:
+1.	Add redundancy – Retry dispensing once before alerting staff to avoid false positives.
+2.	Variable feeding sizes – Adjust amount of food depending on pet size or health needs.
+3.	Energy saving mode – Put sensors and motor in low-power state when idle.
+4.	Wi-Fi or SMS alerts – For remote notification of staff.
+
+
